@@ -1,0 +1,15 @@
+return {
+  {
+    "monsonjeremy/onedark.nvim",
+    opts = {
+      options = {
+        theme = "onedark",
+        -- ... your lualine config
+      },
+    },
+  },
+  {
+    -- "LazyVim/LazyVim",
+    -- opts = { colorscheme = "onedark" },
+  },
+}
