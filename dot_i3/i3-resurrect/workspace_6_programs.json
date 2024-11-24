@@ -1,0 +1,17 @@
+[
+  {
+    "command": [
+      "/usr/bin/python3.11",
+      "/usr/bin/ebook-viewer",
+      "--detach",
+      "/home/mkso/Documents/Programming/Books/David Flanagan - JavaScript_ The Definitive Guide_ Master the World's Most-Used Programming Language-O'Reilly Media (2020).epub"
+    ],
+    "working_directory": "/home/mkso"
+  },
+  {
+    "command": [
+      "/usr/bin/alacritty"
+    ],
+    "working_directory": "/home/mkso"
+  }
+]

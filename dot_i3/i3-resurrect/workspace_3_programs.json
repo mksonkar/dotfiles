@@ -1,0 +1,11 @@
+[
+  {
+    "command": [
+      "/usr/bin/python3.11",
+      "/usr/bin/ebook-viewer",
+      "--detach",
+      "/home/mkso/Documents/Programming/Books/Kerninghan, Brian W._Ritchie, Dennis M - The C programming language-Pearson Education_Prentice Hall (1998_1988).epub"
+    ],
+    "working_directory": "/home/mkso"
+  }
+]

@@ -1,0 +1,11 @@
+[
+  {
+    "command": [
+      "/usr/bin/python3.11",
+      "/usr/bin/ebook-viewer",
+      "--detach",
+      "/home/mkso/Documents/Programming/Books/Matt Frisbie - Professional JavaScript for Web Developers-Wiley (2023).epub"
+    ],
+    "working_directory": "/home/mkso"
+  }
+]
