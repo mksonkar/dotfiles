@@ -1,0 +1,107 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+PATH="$PATH":"$HOME/.local/scripts/"
+bindkey -s ^f "tmux-sessionizer\n"
+
+# Preview file content using bat (https://github.com/sharkdp/bat)
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
+export EDITOR=nvim
+export VISUAL=nvim
+
+#--ANTIGEN---------------------------------
+source /usr/share/zsh/share/antigen.zsh
+
+antigen use oh-my-zsh
+
+# antigen bundle git
+# antigen bundle command-not-found
+antigen bundle colored-man-pages
+# antigen bundle thefuck
+
+# Jump quickly to directories that you have visited "frecently."
+# antigen bundle agkozak/zsh-z
+antigen bundle jeffreytse/zsh-vi-mode
+
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
+
+antigen theme robbyrussell
+
+antigen apply
+#--ANTIGEN---------------------------------
+
+setopt correct                                                  # Auto correct mistakes
+# setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
+# setopt nocaseglob                                               # Case insensitive globbing
+setopt numericglobsort                                          # Sort filenames numerically when it makes sense
+setopt nobeep                                                   # No beep
+setopt appendhistory                                            # Immediately append history instead of overwriting
+setopt histignorealldups                                        # If a new command is a duplicate, remove the older one
+setopt autocd                                                   # if only directory path is entered, cd there.
+setopt inc_append_history                                       # save commands are added to the history immediately, otherwise only when shell exits.
+setopt histignorespace                                          # Don't save commands that start with space
+
+# Enable vi mode
+# bindkey -v
+
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' # Case insensitive tab completion
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
+zstyle ':completion:*' rehash true                              # automatically find new executables in path 
+zstyle ':completion:*' menu select                              # Highlight menu selection
+# Speed up completions
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+HISTFILE=~/.zhistory
+HISTSIZE=10000
+SAVEHIST=10000
+
+WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
+
+## Alias section
+alias cp="cp -i"                                                # Confirm before overwriting something
+alias gitac="git add . && git commit -m"
+alias v="env TERM=wezterm nvim"
+alias vim="env TERM=wezterm nvim"
+
+# File and Dir colors for ls and other outputs
+export LS_OPTIONS='--color=auto'
+eval "$(dircolors -b)"
+alias ls='ls $LS_OPTIONS'
+
+# Theming section  
+# autoload -U compinit colors zcalc
+# compinit -d
+# colors
+
+# Use powerline
+USE_POWERLINE="true"
+# Has weird character width
+# Example:
+#    is not a diamond
+HAS_WIDECHARS="false"
+# Source manjaro-zsh-configuration
+# if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
+#   source /usr/share/zsh/manjaro-zsh-config
+# fi
+# Use manjaro zsh prompt
+# if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
+#   source /usr/share/zsh/manjaro-zsh-prompt
+# fi
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+(( ! ${+functions[p10k]} )) || p10k finalize

@@ -1,0 +1,29 @@
+import = [
+    "~/.config/alacritty/themes/themes/gruvbox_dark.toml"
+]
+
+live_config_reload = true
+
+[shell]
+program = "/usr/bin/zsh"
+args = ['--login']
+
+[font]
+# normal = { family = "Hack Nerd Font Mono", style = "Regular" }
+normal = { family = "MonaspiceNe Nerd Font", style = "Regular" }
+# normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+# normal = { family = "Iosevka Nerd Font Mono", style = "Regular" }
+size = 15
+
+[window]
+blur = true
+opacity = 1.0
+# padding = { x = 0, y = 0 }
+# decorations = 'None'
+
+[cursor]
+style = { shape = "Block", blinking = "On" }
+
+[env]
+# TERM = 'xterm-256color' 
+
